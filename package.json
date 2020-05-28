@@ -1,0 +1,51 @@
+{
+  "name": "@wmfs/tymly-localfilestorage-plugin",
+  "version": "0.0.0-semantically-released",
+  "description": "Implements a local filestorage provider for Tymly's cloudstorage plugin.",
+  "homepage": "https://github.com/wmfs/tymly-localfilestorage-plugin#readme",
+  "author": "West Midlands Fire Service",
+  "keywords": [
+    "tymly",
+    "plugin",
+    "upload",
+    "cloudstorage"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmfs/tymly-localfilestorage-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wmfs/tymly-localfilestorage-plugin/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/exec": "5.0.0",
+    "chai": "4.2.0",
+    "codecov": "3.7.0",
+    "conventional-changelog-metahub": "4.0.1",
+    "cz-conventional-changelog": "3.2.0",
+    "mocha": "7.1.2",
+    "nyc": "15.0.1",
+    "semantic-release": "17.0.7",
+    "standard": "14.3.4",
+    "@wmfs/tymly": "1.140.0"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "nyc mocha && standard",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "semantic-release": "semantic-release"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
