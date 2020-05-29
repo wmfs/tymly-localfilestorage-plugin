@@ -35,7 +35,6 @@ describe('exercise methods', () => {
     localstorage.boot(options)
   }) // beforeEach
 
-
   describe('ensureFolderPath', () => {
     it('absolute paths are rooted in root path', async () => {
       await localstorage.ensureFolderPath('/absolute')
@@ -47,6 +46,17 @@ describe('exercise methods', () => {
       await localstorage.ensureFolderPath('relative')
 
       expect(fs.existsSync(path.join(rootPath, 'relative'))).to.be.true()
+    })
+
+    it('can create nested directories', async () => {
+      const folderPath = 'one/two/three/deep'
+      await localstorage.ensureFolderPath(folderPath)
+
+      let checkPath = rootPath
+      for (const p of folderPath.split('/')) {
+        checkPath = path.join(checkPath, p)
+        expect(fs.existsSync(checkPath)).to.be.true()
+      }
     })
   })
 })
