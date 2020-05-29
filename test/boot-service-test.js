@@ -2,7 +2,10 @@
 
 const chai = require('chai')
 chai.use(require('dirty-chai'))
+chai.use(require('chai-string'))
 const expect = chai.expect
+
+const path = require('path')
 
 const LocalStorageService = require('../lib/components/services/localfilestorage').serviceClass
 
@@ -13,7 +16,9 @@ describe('Boot localstorage service', () => {
     localstorage.boot(options)
   }
 
-  beforeEach (() => {
+  const basePath = path.join(__dirname, 'fixture')
+
+  beforeEach(() => {
     localstorage = new LocalStorageService()
 
     options = {
@@ -24,35 +29,35 @@ describe('Boot localstorage service', () => {
       },
       config: {
         localstorage: {
-          rootPath: '/from/config'
+          rootPath: path.join(basePath, 'config')
         }
       }
     }
   }) // beforeEach
 
-  afterEach (() => {
+  afterEach(() => {
     delete process.env.TYMLY_LOCALSTORAGE_ROOTPATH
   })
 
   describe('good boots', () => {
     it('picks up filesystem root directory from config', () => {
       localstorage.boot(options)
-      expect(localstorage.rootPath).to.be.a('string')
+      expect(localstorage.rootPath).to.endWith('config')
     })
 
     it('picks up filesystem root directory from environment', () => {
       delete options.config.localstorage
-      process.env.TYMLY_LOCALSTORAGE_ROOTPATH='/from/env'
+      process.env.TYMLY_LOCALSTORAGE_ROOTPATH = path.join(basePath, 'env')
 
       localstorage.boot(options)
-      expect(localstorage.rootPath).to.eql('/from/env')
+      expect(localstorage.rootPath).to.endWith('env')
     })
 
     it('prefer config to environment variable', () => {
-      process.env.TYMLY_LOCALSTORAGE_ROOTPATH='/from/env'
+      process.env.TYMLY_LOCALSTORAGE_ROOTPATH = '/from/env'
 
       localstorage.boot(options)
-      expect(localstorage.rootPath).to.eql('/from/config')
+      expect(localstorage.rootPath).to.endWith('config')
     })
 
     it('localstorage registers with cloudstorage on boot', () => {
@@ -67,25 +72,25 @@ describe('Boot localstorage service', () => {
   })
 
   describe('bad boots', () => {
-    it ('loudly fail if path config is missing', () => {
+    it('loudly fail if path config is missing', () => {
       delete options.config.localstorage
 
       expect(onBoot).to.throw(/could not configure/i)
     })
 
-    it ('fail if configure path is not absolute', () => {
+    it('fail if configure path is not absolute', () => {
       options.config.localstorage.rootPath = 'relative/path'
 
       expect(onBoot).to.throw(/must be absolute/i)
     })
 
-    it ('fail if configure path does not exist', () => {
+    it('fail if configure path does not exist', () => {
       options.config.localstorage.rootPath = '/a/path/to/nowhere'
 
-      expect(onBoot).to.throw(/must be exist/i)
+      expect(onBoot).to.throw(/not exist/i)
     })
 
-    it ("don't register if config is missing", () => {
+    it("don't register if config is missing", () => {
       delete options.config.localstorage
 
       let registered = false
@@ -102,7 +107,7 @@ describe('Boot localstorage service', () => {
       expect(onBoot).to.throw(/can't find cloudstorage/i)
     })
 
-    it ("loudly fail if cloudstorage isn't right", () => {
+    it("loudly fail if cloudstorage isn't right", () => {
       delete options.bootedServices.cloudstorage.registerProvider
 
       expect(onBoot).to.throw(/doesn't have registerProvider/i)

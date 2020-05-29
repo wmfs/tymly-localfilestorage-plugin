@@ -19,13 +19,15 @@
     "url": "https://github.com/wmfs/tymly-localfilestorage-plugin/issues"
   },
   "dependencies": {
-    "dottie": "^2.0.2"
+    "dottie": "2.0.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
-    "@semantic-release/git": "9.0.0",
     "@semantic-release/exec": "5.0.0",
+    "@semantic-release/git": "9.0.0",
+    "@wmfs/tymly": "1.140.0",
     "chai": "4.2.0",
+    "chai-string": "1.5.0",
     "codecov": "3.7.0",
     "conventional-changelog-metahub": "4.0.1",
     "cz-conventional-changelog": "3.2.0",
@@ -33,8 +35,7 @@
     "mocha": "7.1.2",
     "nyc": "15.0.1",
     "semantic-release": "17.0.7",
-    "standard": "14.3.4",
-    "@wmfs/tymly": "1.140.0"
+    "standard": "14.3.4"
   },
   "scripts": {
     "lint": "standard",
