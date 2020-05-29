@@ -7,42 +7,37 @@ const expect = chai.expect
 const LocalStorageService = require('../lib/components/services/localfilestorage').serviceClass
 
 describe('Boot localstorage service', () => {
-  it('localstorage registers with cloudstorage on boot', () => {
-    let registered = false
-    const localstorage = new LocalStorageService()
+  let localstorage
+  let options =
 
-    const options = {
+  beforeEach (() => {
+    localstorage = new LocalStorageService()
+
+    options = {
       bootedServices: {
         cloudstorage: {
-          registerProvider: provider => { registered = (provider === localstorage) }
         }
       }
     }
+  })
+
+  it('localstorage registers with cloudstorage on boot', () => {
+    let registered = false
+    options.bootedServices.cloudstorage.registerProvider =
+        provider => { registered = (provider === localstorage) }
 
     localstorage.boot(options)
-
     expect(registered).to.be.true()
   })
 
   it('loudly fail if cloudstorage is not available', () => {
-    const localstorage = new LocalStorageService()
-    const options = {
-      bootedServices: { }
-    }
-
+    delete options.bootedServices.cloudstorage
     const onBoot = () => { localstorage.boot(options) }
 
     expect(onBoot).to.throw(/can not register/i)
   })
 
   it ("loudly fail if cloudstorage isn't right", () => {
-    const localstorage = new LocalStorageService()
-    const options = {
-      bootedServices: {
-        cloudstorage: { }
-      }
-    }
-
     const onBoot = () => { localstorage.boot(options) }
 
     expect(onBoot).to.throw(/can not register/i)
