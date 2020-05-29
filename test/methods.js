@@ -29,8 +29,11 @@ describe('exercise methods', () => {
   }
 
   beforeEach(() => {
-    fs.rmdirSync(rootPath, { recursive: true })
-    fs.mkdirSync(rootPath)
+    const cleanUp = fs.readdirSync(rootPath, { withFileTypes: true })
+      .filter(d => d.isDirectory())
+      .map(d => path.join(rootPath, d.name))
+      .filter(dir => fs.readdirSync(dir).length === 0)
+    cleanUp.forEach(dir => fs.rmdirSync(dir))
 
     localstorage = new LocalStorageService()
     localstorage.boot(options)
@@ -76,5 +79,30 @@ describe('exercise methods', () => {
         })
       } // for ...
     })
+  })
+
+  describe('listFolderContentsFromPath', () => {
+    describe('good path', () => {
+      it ('leaf folder', async () => {
+        const list = await localstorage.listFolderContentsFromPath('to-read/sub-directory')
+        expect(list).to.have.length(2)
+      })
+
+      it ('folder with sub-folder', async () => {
+        const list = await localstorage.listFolderContentsFromPath('to-read')
+        expect(list).to.have.length(3)
+      })
+
+      it('empty folder', async () => {
+        const list = await localstorage.listFolderContentsFromPath('to-read/empty')
+        expect(list).to.have.length(0)
+      })
+    })
+
+    /*
+      async listFolderContentsFromPath (path) {
+        return this.provider_.listFolderContentsFromPath(path)
+      } // listFolderContentsFromPath
+     */
   })
 })
