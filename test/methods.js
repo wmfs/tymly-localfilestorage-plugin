@@ -102,10 +102,21 @@ describe('exercise methods', () => {
       })
     })
 
-    /*
-      async listFolderContentsFromPath (path) {
-        return this.provider_.listFolderContentsFromPath(path)
-      } // listFolderContentsFromPath
-     */
+    describe('return nothing for bad paths', () => {
+      const badPaths = [
+        '..',
+        '../..',
+        '../../../poop',
+        'start/out/ok/but/../../../../../../../oh',
+        'good/path/but/which/does/not/exist'
+      ]
+
+      for (const p of badPaths) {
+        it(p, async () => {
+          const list = await localstorage.listFolderContentsFromPath(p)
+          expect(list).to.have.length(0)
+        })
+      }
+    })
   })
 })
