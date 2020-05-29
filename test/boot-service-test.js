@@ -73,6 +73,18 @@ describe('Boot localstorage service', () => {
       expect(onBoot).to.throw(/could not configure/i)
     })
 
+    it ('fail if configure path is not absolute', () => {
+      options.config.localstorage.rootPath = 'relative/path'
+
+      expect(onBoot).to.throw(/must be absolute/i)
+    })
+
+    it ('fail if configure path does not exist', () => {
+      options.config.localstorage.rootPath = '/a/path/to/nowhere'
+
+      expect(onBoot).to.throw(/must be exist/i)
+    })
+
     it ("don't register if config is missing", () => {
       delete options.config.localstorage
 
