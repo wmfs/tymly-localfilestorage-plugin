@@ -28,6 +28,11 @@ describe('exercise methods', () => {
     }
   }
 
+  before(() => {
+    const emptyDir = path.join(rootPath, 'to-read', 'empty')
+    if (!fs.existsSync(emptyDir)) fs.mkdirSync(emptyDir)
+  })
+
   beforeEach(() => {
     const cleanUp = fs.readdirSync(rootPath, { withFileTypes: true })
       .filter(d => d.isDirectory())
