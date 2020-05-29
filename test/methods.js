@@ -83,7 +83,7 @@ describe('exercise methods', () => {
 
   describe('listFolderContentsFromPath', () => {
     describe('good path', () => {
-      it ('folder with files', async () => {
+      it('folder with files', async () => {
         const list = await localstorage.listFolderContentsFromPath('to-read/sub-directory')
         expect(list).to.have.length(2)
       })
@@ -93,7 +93,7 @@ describe('exercise methods', () => {
         expect(list).to.have.length(0)
       })
 
-      it ('folder with files and sub-folders', async () => {
+      it('folder with files and sub-folders', async () => {
         const list = await localstorage.listFolderContentsFromPath('to-read')
         expect(list).to.have.length(5)
 
