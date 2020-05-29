@@ -83,19 +83,22 @@ describe('exercise methods', () => {
 
   describe('listFolderContentsFromPath', () => {
     describe('good path', () => {
-      it ('leaf folder', async () => {
+      it ('folder with files', async () => {
         const list = await localstorage.listFolderContentsFromPath('to-read/sub-directory')
         expect(list).to.have.length(2)
-      })
-
-      it ('folder with sub-folder', async () => {
-        const list = await localstorage.listFolderContentsFromPath('to-read')
-        expect(list).to.have.length(3)
       })
 
       it('empty folder', async () => {
         const list = await localstorage.listFolderContentsFromPath('to-read/empty')
         expect(list).to.have.length(0)
+      })
+
+      it ('folder with files and sub-folders', async () => {
+        const list = await localstorage.listFolderContentsFromPath('to-read')
+        expect(list).to.have.length(5)
+
+        expect(list).to.deep.include({ Name: 'empty' })
+        expect(list).to.deep.include({ Name: 'file-one.txt' })
       })
     })
 
