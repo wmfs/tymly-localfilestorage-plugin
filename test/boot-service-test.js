@@ -23,4 +23,15 @@ describe('Boot localstorage service', () => {
 
     expect(registered).to.be.true()
   })
+
+  it('loudly file if cloudstorage is not available', () => {
+    const localstorage = new LocalStorageService()
+    const options = {
+      bootedServices: { }
+    }
+
+    const onBoot = () => { localstorage.boot(options) }
+
+    expect(onBoot).to.throw(/can not register/)
+  })
 })
