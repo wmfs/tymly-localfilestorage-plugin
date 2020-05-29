@@ -3,6 +3,7 @@
 const chai = require('chai')
 chai.use(require('dirty-chai'))
 chai.use(require('chai-string'))
+chai.use(require('chai-as-promised'))
 const expect = chai.expect
 
 const path = require('path')
@@ -36,27 +37,44 @@ describe('exercise methods', () => {
   }) // beforeEach
 
   describe('ensureFolderPath', () => {
-    it('absolute paths are rooted in root path', async () => {
-      await localstorage.ensureFolderPath('/absolute')
+    describe('create good paths', () => {
+      it('absolute paths are rooted in root path', async () => {
+        await localstorage.ensureFolderPath('/absolute')
 
-      expect(fs.existsSync(path.join(rootPath, 'absolute'))).to.be.true()
-    })
+        expect(fs.existsSync(path.join(rootPath, 'absolute'))).to.be.true()
+      })
 
-    it('relative paths are resolved relative to root path', async () => {
-      await localstorage.ensureFolderPath('relative')
+      it('relative paths are resolved relative to root path', async () => {
+        await localstorage.ensureFolderPath('relative')
 
-      expect(fs.existsSync(path.join(rootPath, 'relative'))).to.be.true()
-    })
+        expect(fs.existsSync(path.join(rootPath, 'relative'))).to.be.true()
+      })
 
-    it('can create nested directories', async () => {
-      const folderPath = 'one/two/three/deep'
-      await localstorage.ensureFolderPath(folderPath)
+      it('can create nested directories', async () => {
+        const folderPath = 'one/two/three/deep'
+        await localstorage.ensureFolderPath(folderPath)
 
-      let checkPath = rootPath
-      for (const p of folderPath.split('/')) {
-        checkPath = path.join(checkPath, p)
-        expect(fs.existsSync(checkPath)).to.be.true()
-      }
+        let checkPath = rootPath
+        for (const p of folderPath.split('/')) {
+          checkPath = path.join(checkPath, p)
+          expect(fs.existsSync(checkPath)).to.be.true()
+        }
+      })
+    }) // good paths
+
+    describe('reject naughty paths that try to escape rootPath', () => {
+      const badPaths = [
+        '.',
+        '..',
+        '../../../poop',
+        'start/out/ok/but/../../../../../../../oh'
+      ]
+
+      for (const p of badPaths) {
+        it(p, () => {
+          return expect(localstorage.ensureFolderPath(p)).to.eventually.be.rejectedWith(Error)
+        })
+      } // for ...
     })
   })
 })
