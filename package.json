@@ -19,6 +19,7 @@
     "url": "https://github.com/wmfs/tymly-localfilestorage-plugin/issues"
   },
   "dependencies": {
+    "dottie": "^2.0.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
