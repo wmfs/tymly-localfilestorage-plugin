@@ -11,6 +11,7 @@
     "cloudstorage"
   ],
   "license": "MIT",
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wmfs/tymly-localfilestorage-plugin.git"
