@@ -16,7 +16,7 @@ const LocalStorageService = require('../lib/components/services/localfilestorage
 describe('copyFileToRemotePath', () => {
   let localstorage
 
-  const rootPath = path.join(__dirname, 'fixture', 'methods', 'to-write')
+  const rootPath = path.join(__dirname, 'fixture', 'methods', 'copy-to')
   const options = {
     bootedServices: {
       cloudstorage: {
