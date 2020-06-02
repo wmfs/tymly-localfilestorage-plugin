@@ -42,8 +42,6 @@ describe('ensureFolderPath', () => {
     tearDownDirectories(rootPath)
   })
 
-
-
   describe('create good paths', () => {
     it('absolute paths are rooted in root path', async () => {
       await localstorage.ensureFolderPath('/absolute')

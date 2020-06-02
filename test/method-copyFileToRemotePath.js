@@ -42,8 +42,8 @@ describe('copyFileToRemotePath', () => {
   })
 
   describe('happy path', () => {
-    const fileName = "hello.txt"
-    const localPath = path.join(__dirname, "fixture", "local", fileName)
+    const fileName = 'hello.txt'
+    const localPath = path.join(__dirname, 'fixture', 'local', fileName)
     const remotePath = path.join('to-write')
 
     it('make sure target folder exists and is empty', async () => {

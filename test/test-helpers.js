@@ -4,7 +4,7 @@ const fs = require('fs')
 function tearDownDirectories (dirPath, root) {
   if (!fs.existsSync(dirPath)) return
 
-  const files = fs.readdirSync(dirPath, { withFileTypes: true })
+  fs.readdirSync(dirPath, { withFileTypes: true })
     .filter(f => f.isFile())
     .map(f => path.join(dirPath, f.name))
     .forEach(f => fs.unlinkSync(f))
