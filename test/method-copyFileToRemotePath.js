@@ -32,6 +32,7 @@ describe('copyFileToRemotePath', () => {
   }
 
   const fileName = 'hello.txt'
+  const renamedFileName = 'world.txt'
   const localPath = path.join(__dirname, 'fixture', 'local', fileName)
   const remotePath = path.join('to-write')
 
@@ -60,14 +61,15 @@ describe('copyFileToRemotePath', () => {
     })
 
     it('copy file to remote folder, giving filename', async () => {
-      const remoteFile = await localstorage.copyFileToRemotePath(localPath, path.join(remotePath, 'renamed-file'))
-      expect(remoteFile).to.equal(path.join('/', 'to-write', 'renamed-file'))
+      const remoteFile = await localstorage.copyFileToRemotePath(localPath, remotePath, renamedFileName)
+      expect(remoteFile).to.equal(path.join('/', 'to-write', renamedFileName))
     })
 
     it('target folder lists the file', async () => {
       const contents = await localstorage.listFolderContentsFromPath(remotePath)
-      expect(contents).to.have.length(1)
+      expect(contents).to.have.length(2)
       expect(contents).to.deep.include({ Name: fileName })
+      expect(contents).to.deep.include({ Name: renamedFileName })
     })
   })
 
@@ -80,7 +82,7 @@ describe('copyFileToRemotePath', () => {
 
     it('remote path does not exist', () => {
       return expect(
-        localstorage.copyFileToRemotePath(localPath, 'bad-path')
+        localstorage.copyFileToRemotePath(localPath, 'badpath')
       ).to.eventually.be.rejectedWith(Error)
     })
 
