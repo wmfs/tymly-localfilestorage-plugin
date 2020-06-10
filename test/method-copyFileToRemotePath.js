@@ -54,9 +54,14 @@ describe('copyFileToRemotePath', () => {
       expect(contents).to.have.length(0)
     })
 
-    it('copy file to remote location', async () => {
+    it('copy file to remote folder', async () => {
       const remoteFile = await localstorage.copyFileToRemotePath(localPath, remotePath)
       expect(remoteFile).to.equal(path.join('/', 'to-write', fileName))
+    })
+
+    it('copy file to remote folder, giving filename', async () => {
+      const remoteFile = await localstorage.copyFileToRemotePath(localPath, path.join(remotePath, 'renamed-file'))
+      expect(remoteFile).to.equal(path.join('/', 'to-write', 'renamed-file'))
     })
 
     it('target folder lists the file', async () => {
