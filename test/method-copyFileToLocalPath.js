@@ -11,7 +11,7 @@ const fs = require('fs')
 
 const LocalStorageService = require('../lib/components/services/localfilestorage').serviceClass
 
-describe('copyFileToRemotePath', () => {
+describe('copyFileToLocalPath', () => {
   let localstorage
 
   const rootPath = path.join(__dirname, 'fixture', 'methods', 'copy-from')
