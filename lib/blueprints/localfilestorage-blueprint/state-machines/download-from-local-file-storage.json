@@ -6,7 +6,31 @@
   "StartAt": "CopyLocally",
   "States": {
     "CopyLocally": {
-      "Type": "Succeed"
+      "Type": "Task",
+      "Resource": "module:copyFileToLocalFolder",
+      "Parameters": {
+        "localFolderPath.$": "$.localFolderPath",
+        "remoteFilePath.$": "$.remoteFilePath"
+      },
+      "ResultPath": "$.localFilePath",
+      "Next": "DownloadFile"
+    },
+    "DownloadFile": {
+      "Type": "Task",
+      "Resource": "module:fileDownloading",
+      "Parameters": {
+        "filePath.$": "$.localFilePath",
+        "deleteAfterDownload": true
+      },
+      "ResultPath": "$.downloadUrl",
+      "Next": "Immediate"
+    },
+    "Immediate": {
+      "Type": "Pass",
+      "Result": {
+        "immediateDownload": true
+      },
+      "End": true
     }
   },
   "restrictions": [
