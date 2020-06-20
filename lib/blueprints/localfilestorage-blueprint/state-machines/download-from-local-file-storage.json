@@ -1,0 +1,20 @@
+{
+  "Comment": "Download a file from local file storage",
+  "name": "Download File",
+  "version": "1.0",
+  "categories": [],
+  "StartAt": "CopyLocally",
+  "States": {
+    "CopyLocally": {
+      "Type": "Succeed"
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "$authenticated",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
