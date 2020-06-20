@@ -22,7 +22,7 @@
         "filePath.$": "$.localFilePath",
         "deleteAfterDownload": true
       },
-      "ResultPath": "$.downloadUrl",
+      "ResultPath": "$.downloadPath",
       "Next": "Immediate"
     },
     "Immediate": {
