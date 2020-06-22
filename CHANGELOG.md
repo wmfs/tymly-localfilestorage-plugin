@@ -1,3 +1,28 @@
+# [1.1.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.0.0...v1.1.0) (2020-06-22)
+
+
+### ✨ Features
+
+* Fill out downloadFromLocalFileStorage blueprint. ([3ab1c86](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/3ab1c8603a6db597795264864c5e117305c8ca08))
+* **service:** Extend listFolderContentsFromPath to include full remote path of file, and launches f ([eba19c6](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/eba19c634edc95465f2f709263db0843d2964f29))
+* Blueprint to support direct file downloading ([60bb00c](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/60bb00c54bfeafc2c38a85e3f53c8e5088142c4a))
+
+
+### 🐛 Bug Fixes
+
+* **download state-machine:** Change downloadUrl output to downloadPath ([3170018](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/31700181c0c045bcc0a4f04ce3335507fc759cb8))
+* Extend listFolderContentsFromPath to include launches pointing to download blueprint ([fb0b9e7](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/fb0b9e7c1922690799b4b4a9f98a5c23578dd365))
+* **ensureFolderPath:** Correct return value ([9519958](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/9519958b134263adf9bc2f351448fb6b30fb2f5d))
+* **service:** Extend copyFileToRemotePath to take remote file name parameter ([cfbf9da](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/cfbf9da9a0f4396c1d298ec6276c3c4fb0d7cd01))
+
+
+### 🚨 Tests
+
+* Correct tests - needs temp service to boot ([647514b](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/647514bceaa6398794d4c661eac1335c58b70c72))
+* Corrected test name ([62ab625](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/62ab62544820f4ff27557d426fd48572473d15ec))
+* service boot is now async. Correct tests ([e7737da](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/e7737dabefa2d16fb53884c6b67c6c240518ce2e))
+* **copyFileToRemotePath:** Test copy to remote when we specify the filename as well as the folder ([caeaa01](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/caeaa017134c3c7bcddeaacc1177714cc0243652))
+
 # 1.0.0 (2020-06-03)
 
 
