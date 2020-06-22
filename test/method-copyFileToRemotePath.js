@@ -20,8 +20,10 @@ describe('copyFileToRemotePath', () => {
   const options = {
     bootedServices: {
       cloudstorage: {
-        registerProvider: () => {
-        }
+        registerProvider: () => { }
+      },
+      temp: {
+        makeTempDir: () => { }
       }
     },
     config: {
@@ -68,8 +70,9 @@ describe('copyFileToRemotePath', () => {
     it('target folder lists the file', async () => {
       const contents = await localstorage.listFolderContentsFromPath(remotePath)
       expect(contents).to.have.length(2)
-      expect(contents).to.deep.include({ Name: fileName })
-      expect(contents).to.deep.include({ Name: renamedFileName })
+      const names = contents.map(c => c.Name)
+      expect(names).to.include(fileName)
+      expect(names).to.include(renamedFileName)
     })
   })
 

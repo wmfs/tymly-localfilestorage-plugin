@@ -25,6 +25,9 @@ describe('Boot localstorage service', () => {
       bootedServices: {
         cloudstorage: {
           registerProvider: () => { }
+        },
+        temp: {
+          makeTempDir: () => { }
         }
       },
       config: {
