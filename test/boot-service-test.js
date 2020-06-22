@@ -3,6 +3,7 @@
 const chai = require('chai')
 chai.use(require('dirty-chai'))
 chai.use(require('chai-string'))
+chai.use(require('chai-as-promised'))
 const expect = chai.expect
 
 const path = require('path')
@@ -12,9 +13,6 @@ const LocalStorageService = require('../lib/components/services/localfilestorage
 describe('Boot localstorage service', () => {
   let localstorage
   let options
-  const onBoot = () => {
-    localstorage.boot(options)
-  }
 
   const basePath = path.join(__dirname, 'fixture')
 
@@ -25,6 +23,9 @@ describe('Boot localstorage service', () => {
       bootedServices: {
         cloudstorage: {
           registerProvider: () => { }
+        },
+        temp: {
+          makeTempDir: () => { }
         }
       },
       config: {
@@ -40,32 +41,32 @@ describe('Boot localstorage service', () => {
   })
 
   describe('good boots', () => {
-    it('picks up filesystem root directory from config', () => {
-      localstorage.boot(options)
+    it('picks up filesystem root directory from config', async () => {
+      await localstorage.boot(options)
       expect(localstorage.rootPath).to.endWith('config')
     })
 
-    it('picks up filesystem root directory from environment', () => {
+    it('picks up filesystem root directory from environment', async () => {
       delete options.config.localstorage
       process.env.TYMLY_LOCALSTORAGE_ROOTPATH = path.join(basePath, 'env')
 
-      localstorage.boot(options)
+      await localstorage.boot(options)
       expect(localstorage.rootPath).to.endWith('env')
     })
 
-    it('prefer config to environment variable', () => {
+    it('prefer config to environment variable', async () => {
       process.env.TYMLY_LOCALSTORAGE_ROOTPATH = '/from/env'
 
-      localstorage.boot(options)
+      await localstorage.boot(options)
       expect(localstorage.rootPath).to.endWith('config')
     })
 
-    it('localstorage registers with cloudstorage on boot', () => {
+    it('localstorage registers with cloudstorage on boot', async () => {
       let registered = false
       options.bootedServices.cloudstorage.registerProvider =
         provider => { registered = (provider === localstorage) }
 
-      localstorage.boot(options)
+      await localstorage.boot(options)
 
       expect(registered).to.be.true()
     })
@@ -75,19 +76,19 @@ describe('Boot localstorage service', () => {
     it('loudly fail if path config is missing', () => {
       delete options.config.localstorage
 
-      expect(onBoot).to.throw(/could not configure/i)
+      return expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/could not configure/i)
     })
 
     it('fail if configure path is not absolute', () => {
       options.config.localstorage.rootPath = 'relative/path'
 
-      expect(onBoot).to.throw(/must be absolute/i)
+      expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/must be absolute/i)
     })
 
     it('fail if configure path does not exist', () => {
       options.config.localstorage.rootPath = '/a/path/to/nowhere'
 
-      expect(onBoot).to.throw(/not exist/i)
+      expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/not exist/i)
     })
 
     it("don't register if config is missing", () => {
@@ -97,20 +98,20 @@ describe('Boot localstorage service', () => {
       options.bootedServices.cloudstorage.registerProvider =
         provider => { registered = (provider === localstorage) }
 
-      expect(onBoot).to.throw(/could not configure/i)
+      expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/could not configure/i)
       expect(registered).to.be.false()
     })
 
     it('loudly fail if cloudstorage is not available', () => {
       delete options.bootedServices.cloudstorage
 
-      expect(onBoot).to.throw(/can't find cloudstorage/i)
+      expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/can't find cloudstorage/i)
     })
 
     it("loudly fail if cloudstorage isn't right", () => {
       delete options.bootedServices.cloudstorage.registerProvider
 
-      expect(onBoot).to.throw(/doesn't have registerProvider/i)
+      expect(localstorage.boot(options)).to.eventually.be.rejectedWith(/doesn't have registerProvider/i)
     })
   })
 })

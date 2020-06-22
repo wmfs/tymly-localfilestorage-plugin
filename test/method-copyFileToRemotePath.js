@@ -20,8 +20,10 @@ describe('copyFileToRemotePath', () => {
   const options = {
     bootedServices: {
       cloudstorage: {
-        registerProvider: () => {
-        }
+        registerProvider: () => { }
+      },
+      temp: {
+        makeTempDir: () => { }
       }
     },
     config: {
@@ -32,6 +34,7 @@ describe('copyFileToRemotePath', () => {
   }
 
   const fileName = 'hello.txt'
+  const renamedFileName = 'world.txt'
   const localPath = path.join(__dirname, 'fixture', 'local', fileName)
   const remotePath = path.join('to-write')
 
@@ -54,15 +57,22 @@ describe('copyFileToRemotePath', () => {
       expect(contents).to.have.length(0)
     })
 
-    it('copy file to remote location', async () => {
+    it('copy file to remote folder', async () => {
       const remoteFile = await localstorage.copyFileToRemotePath(localPath, remotePath)
       expect(remoteFile).to.equal(path.join('/', 'to-write', fileName))
     })
 
+    it('copy file to remote folder, giving filename', async () => {
+      const remoteFile = await localstorage.copyFileToRemotePath(localPath, remotePath, renamedFileName)
+      expect(remoteFile).to.equal(path.join('/', 'to-write', renamedFileName))
+    })
+
     it('target folder lists the file', async () => {
       const contents = await localstorage.listFolderContentsFromPath(remotePath)
-      expect(contents).to.have.length(1)
-      expect(contents).to.deep.include({ Name: fileName })
+      expect(contents).to.have.length(2)
+      const names = contents.map(c => c.Name)
+      expect(names).to.include(fileName)
+      expect(names).to.include(renamedFileName)
     })
   })
 
@@ -75,7 +85,7 @@ describe('copyFileToRemotePath', () => {
 
     it('remote path does not exist', () => {
       return expect(
-        localstorage.copyFileToRemotePath(localPath, 'bad-path')
+        localstorage.copyFileToRemotePath(localPath, 'badpath')
       ).to.eventually.be.rejectedWith(Error)
     })
 

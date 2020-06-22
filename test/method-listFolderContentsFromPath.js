@@ -20,6 +20,9 @@ describe('listFolderContentsFromPath', () => {
     bootedServices: {
       cloudstorage: {
         registerProvider: () => { }
+      },
+      temp: {
+        makeTempDir: () => { }
       }
     },
     config: {
@@ -54,9 +57,9 @@ describe('listFolderContentsFromPath', () => {
     it('folder with files and sub-folders', async () => {
       const list = await localstorage.listFolderContentsFromPath('to-read')
       expect(list).to.have.length(5)
-
-      expect(list).to.deep.include({ Name: 'empty' })
-      expect(list).to.deep.include({ Name: 'file-one.txt' })
+      const names = list.map(c => c.Name)
+      expect(names).to.include('empty')
+      expect(names).to.include('file-one.txt')
     })
   })
 

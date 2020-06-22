@@ -1,0 +1,44 @@
+{
+  "Comment": "Download a file from local file storage",
+  "name": "Download File",
+  "version": "1.0",
+  "categories": [],
+  "StartAt": "CopyLocally",
+  "States": {
+    "CopyLocally": {
+      "Type": "Task",
+      "Resource": "module:copyFileToLocalFolder",
+      "Parameters": {
+        "localFolderPath.$": "$.localFolderPath",
+        "remoteFilePath.$": "$.remoteFilePath"
+      },
+      "ResultPath": "$.localFilePath",
+      "Next": "DownloadFile"
+    },
+    "DownloadFile": {
+      "Type": "Task",
+      "Resource": "module:fileDownloading",
+      "Parameters": {
+        "filePath.$": "$.localFilePath",
+        "deleteAfterDownload": true
+      },
+      "ResultPath": "$.downloadPath",
+      "Next": "Immediate"
+    },
+    "Immediate": {
+      "Type": "Pass",
+      "Result": {
+        "immediateDownload": true
+      },
+      "End": true
+    }
+  },
+  "restrictions": [
+    {
+      "roleId": "$authenticated",
+      "allows": [
+        "*"
+      ]
+    }
+  ]
+}
