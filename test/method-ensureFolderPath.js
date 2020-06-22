@@ -21,6 +21,9 @@ describe('ensureFolderPath', () => {
     bootedServices: {
       cloudstorage: {
         registerProvider: () => { }
+      },
+      temp: {
+        makeTempDir: () => { }
       }
     },
     config: {
@@ -30,12 +33,12 @@ describe('ensureFolderPath', () => {
     }
   }
 
-  before(() => {
+  before(async () => {
     tearDownDirectories(rootPath)
     fs.mkdirSync(rootPath)
 
     localstorage = new LocalStorageService()
-    localstorage.boot(options)
+    await localstorage.boot(options)
   }) // before
 
   after(() => {
