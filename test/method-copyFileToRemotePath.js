@@ -38,12 +38,12 @@ describe('copyFileToRemotePath', () => {
   const localPath = path.join(__dirname, 'fixture', 'local', fileName)
   const remotePath = path.join('to-write')
 
-  before(() => {
+  before(async () => {
     tearDownDirectories(rootPath)
     fs.mkdirSync(rootPath)
 
     localstorage = new LocalStorageService()
-    localstorage.boot(options)
+    await localstorage.boot(options)
   })
 
   after(() => {

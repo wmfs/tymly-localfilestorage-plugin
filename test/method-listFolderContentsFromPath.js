@@ -32,11 +32,11 @@ describe('listFolderContentsFromPath', () => {
     }
   }
 
-  before(() => {
+  before(async () => {
     if (!fs.existsSync(emptyDir)) fs.mkdirSync(emptyDir)
 
     localstorage = new LocalStorageService()
-    localstorage.boot(options)
+    await localstorage.boot(options)
   })
 
   after(() => {

@@ -18,8 +18,10 @@ describe('copyFileToLocalPath', () => {
   const options = {
     bootedServices: {
       cloudstorage: {
-        registerProvider: () => {
-        }
+        registerProvider: () => { }
+      },
+      temp: {
+        makeTempDir: () => { }
       }
     },
     config: {
@@ -36,11 +38,11 @@ describe('copyFileToLocalPath', () => {
 
   const localFileName = path.join(localPath, fileName)
 
-  before(() => {
+  before(async () => {
     if (fs.existsSync(localFileName)) fs.unlinkSync(localFileName)
 
     localstorage = new LocalStorageService()
-    localstorage.boot(options)
+    await localstorage.boot(options)
   })
 
   after(() => {
