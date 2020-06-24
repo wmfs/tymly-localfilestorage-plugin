@@ -9,6 +9,7 @@
       "Type": "Task",
       "Resource": "module:copyFileToLocalFolder",
       "Parameters": {
+        "provider": "local",
         "localFolderPath.$": "$.localFolderPath",
         "remoteFilePath.$": "$.remoteFilePath"
       },
