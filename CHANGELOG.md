@@ -1,3 +1,16 @@
+## [1.1.1](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.1.0...v1.1.1) (2020-06-26)
+
+
+### 🐛 Bug Fixes
+
+* Register with cloud-provider by name ([2904eb4](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/2904eb43dfabb39aa5b4ff8b5e2e0bcc6d483c9b))
+* Specify local provider in download state-machine ([2934d7e](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/2934d7ef66abcd7ca28064febd89202a78a959c5))
+
+
+### 🚨 Tests
+
+* boot is now async. Correct tests ([c9083d2](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/c9083d2dc393d5cdb368efb45b84a90224381ff4))
+
 # [1.1.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.0.0...v1.1.0) (2020-06-22)
 
 
