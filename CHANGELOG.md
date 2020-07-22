@@ -1,3 +1,15 @@
+## [1.1.2](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.1.1...v1.1.2) (2020-07-22)
+
+
+### 🐛 Bug Fixes
+
+* Include root path in boot failure messages ([c0b9fc5](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/c0b9fc54a2241fa2e3fe49daea288f64cbdadd3d))
+
+
+### ⚙️ Continuous Integrations
+
+* **circle:** use updated circle node image [skip ci] ([096d22f](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/096d22f3dd24ee87ea2d218806ad4e5052cea6d3))
+
 ## [1.1.1](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.1.0...v1.1.1) (2020-06-26)
 
 
