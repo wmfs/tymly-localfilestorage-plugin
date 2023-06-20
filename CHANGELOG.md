@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.3.0...v1.4.0) (2023-06-20)
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@semantic-release](https://github.com/semantic-release)/changelog to v6.0.3 ([89a6585](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/89a65852a9a249d9375f91c077f308f43b3b7de0))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly to v1.252.0 ([8ef7024](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/8ef7024c8e8caa46f60f6c95fe3e9e096dd5b72e))
+* **deps-dev:** update dependency semantic-release to v20.1.3 ([928caf6](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/928caf601416738435fe4d6b580c5be413caca6e))
+* **deps-dev:** update dependency semantic-release to v21 ([4864031](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/4864031b5e4c51648a61b0292211bd1162d147d1))
+* **deps-dev:** update dependency semantic-release to v21.0.1 ([6463bdd](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/6463bdd6128fb2fd02e60ec6e231f1064ef242e4))
+* **deps-dev:** update dependency semantic-release to v21.0.2 ([625db58](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/625db58b0adbc55db62d5e4a8b728000bafded40))
+* **deps-dev:** update dependency semantic-release to v21.0.3 ([530c172](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/530c17292bd41f72d5661fd3df839c622fc0214c))
+* **deps-dev:** update dependency semantic-release to v21.0.5 ([9578e1e](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/9578e1e44b7d26ba5bed5df4bb54a1d036c4fc98))
+* **deps-dev:** update dependency standard to v17.1.0 ([afa8215](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/afa821578102e6055d9a7348a2ce378a8e912eb8))
+* **deps:** update dependency dottie to v2.0.4 [security] ([630369b](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/630369be806fe00bd8c2d7770f0c0d9431a9da04))
+
 # [1.3.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.2.0...v1.3.0) (2023-03-13)
 
 
