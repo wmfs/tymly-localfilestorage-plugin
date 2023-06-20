@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.4.0...v1.5.0) (2023-06-20)
+
+
+### 🛠 Builds
+
+* **deps:** update dependency dottie to v2.0.6 ([0badce1](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/0badce1cab6082e365a64aceb97c9fd25f0475e6))
+
 # [1.4.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.3.0...v1.4.0) (2023-06-20)
 
 
