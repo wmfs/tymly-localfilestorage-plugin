@@ -1,3 +1,20 @@
+# [1.6.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.5.0...v1.6.0) (2023-09-19)
+
+
+### 🛠 Builds
+
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly to v1.258.0 ([1667e16](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/1667e164e9cb0a8f95099bea0fb057b080433153))
+* **deps-dev:** update dependency [@wmfs](https://github.com/wmfs)/tymly to v1.261.0 ([803679d](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/803679d37771a4dace00a7cef2703011c51d9ced))
+* **deps-dev:** update dependency chai to v4.3.8 ([ec08e2a](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/ec08e2a528c69365be20aadcc869314a727f173c))
+* **deps-dev:** update dependency semantic-release to v21.0.6 ([7712550](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/77125500a595a4f4970d085d294904e0aa2f8e48))
+* **deps-dev:** update dependency semantic-release to v21.0.7 ([1fe3aaa](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/1fe3aaa408428043c5c44105c6b5069740b5c907))
+* **deps-dev:** update dependency semantic-release to v21.0.9 ([55a5fbc](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/55a5fbc2dbd2da1a92eba0563848b455eee70b31))
+* **deps-dev:** update dependency semantic-release to v21.1.0 ([d728c86](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/d728c865eae39711d61ca8faa0ec4a8a5ea12435))
+* **deps-dev:** update dependency semantic-release to v21.1.1 ([5302362](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/53023629e2a52fd7bee1b893133cea4b173eab59))
+* **deps-dev:** update dependency semantic-release to v21.1.2 ([eed6341](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/eed63413c2f26ea3ed7179398f7431f0afd78138))
+* **deps-dev:** update dependency semantic-release to v22 ([ad21b46](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/ad21b468c674658dbb22a990dbfa695b389c50bb))
+* **deps:** revert semantic-release ([0c0b017](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/0c0b01700e1e9fbe5c676e8afb091f1e77c5731b))
+
 # [1.5.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.4.0...v1.5.0) (2023-06-20)
 
 
