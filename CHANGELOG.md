@@ -1,3 +1,23 @@
+## [1.7.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.6.1...v1.7.0) (2026-10-30)
+
+### Build system dependencies :hammer:
+
+* **deps-dev:** fix conventionalcommit versions [sc-34125] ([29a843b](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/29a843be046a21c352f30195b990f0670a59f30b))
+* **deps-dev:** update dependency @wmfs/tymly to v1.317.1 ([#354](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/354)) ([0a12da1](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/0a12da192bb37a0c52b8ce4fb9f667f3d80f209f))
+* **deps-dev:** update dependency @wmfs/tymly to v1.322.0 ([#363](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/363)) ([b440931](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/b44093118116ef61a9249a46f57a725dd7c096dd))
+* **deps-dev:** update dependency conventional-changelog-conventionalcommits to v10.4.0 ([#355](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/355)) ([5e0e00f](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/5e0e00f5ee3446d614e9fb0dbc53dd9f819f49e8))
+* **deps-dev:** update dependency conventional-changelog-conventionalcommits to v10.4.1 ([#360](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/360)) ([dc302e7](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/dc302e745012586ba1e842d92b7522aad03a9e5a))
+* **deps-dev:** update dependency mocha to v12 ([#356](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/356)) ([fb58cec](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/fb58cec331683a23eda82464dbb4a1aba5c602b9))
+* **deps-dev:** update dependency mocha to v12.0.1 ([#357](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/357)) ([f28d2cf](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/f28d2cf6f68cb415227ca9fbbe44737005a252c3))
+* **deps-dev:** update dependency mocha to v12.0.2 ([#358](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/358)) ([7d128d1](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/7d128d193700de518faac54e8433f200ef25ada2))
+* **deps-dev:** update dependency mocha to v12.0.3 ([#359](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/359)) ([e31b91e](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/e31b91ecd699c21d9c8b8bbe025fa8d83a4495cc))
+* **deps:** update dependency dottie to v2.0.7 [security] ([#333](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/333)) ([f084c5b](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/f084c5bcff58d4176d798c8255c4c260015088f1))
+
+### CICD Configuration Changes :construction_worker:
+
+* use github-app-token orb for release token [sc-34101] ([#362](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/362)) ([3700a70](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/3700a70999ec8193076f352b6d00f91bff25936a))
+* use shared renovate preset [sc-34117] ([#361](https://github.com/wmfs/tymly-localfilestorage-plugin/issues/361)) ([49925fb](https://github.com/wmfs/tymly-localfilestorage-plugin/commit/49925fbe208fe7d036b7347bf29aedf026adefab))
+
 ## [1.6.1](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.6.0...v1.6.1) (2026-08-13)
 
 # [1.6.0](https://github.com/wmfs/tymly-localfilestorage-plugin/compare/v1.5.0...v1.6.0) (2023-09-19)
